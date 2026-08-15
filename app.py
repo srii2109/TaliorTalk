@@ -105,72 +105,74 @@ st.markdown("""
         text-transform: uppercase;
         margin-bottom: 6px;
         letter-spacing: 0.8px;
+        letter-spacing: 1.2px;
         opacity: 0.85;
     }
     .user-bubble .bubble-sender {
         color: #a1a1aa;
     }
     .assistant-bubble .bubble-sender {
-        color: #e6b325;
+        color: #d4af37;
     }
     
     /* Glassmorphism Saree Card */
     .saree-card {
-        background: rgba(255, 255, 255, 0.015) !important;
-        backdrop-filter: blur(20px) saturate(180%) !important;
-        -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-        border: 1px solid rgba(255, 255, 255, 0.05) !important;
-        border-radius: 24px !important;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.005)) !important;
+        backdrop-filter: blur(25px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.06) !important;
+        border-radius: 28px !important;
         padding: 0px !important;
         text-align: center !important;
-        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
         margin-bottom: 30px !important;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.45) !important;
         overflow: hidden !important;
         display: flex;
         flex-direction: column;
     }
     .saree-card:hover {
-        transform: translateY(-12px) scale(1.02) !important;
-        border-color: rgba(230, 179, 37, 0.35) !important;
-        box-shadow: 0 20px 50px rgba(230, 179, 37, 0.12) !important;
-        background: rgba(255, 255, 255, 0.03) !important;
+        transform: translateY(-12px) scale(1.025) !important;
+        border-color: rgba(212, 175, 55, 0.4) !important;
+        box-shadow: 0 25px 60px rgba(212, 175, 55, 0.15) !important;
+        background: rgba(255, 255, 255, 0.035) !important;
     }
     
     .saree-img-container {
         width: 100%;
-        height: 280px;
+        height: 300px;
         overflow: hidden;
         position: relative;
-        background: #121318;
+        background: #0f1013;
         border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
     .saree-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .saree-card:hover .saree-img {
-        transform: scale(1.08);
+        transform: scale(1.1);
     }
     
     .saree-details {
-        padding: 20px;
+        padding: 24px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         flex-grow: 1;
         text-align: center;
+        background: rgba(7, 8, 10, 0.2);
     }
     
     .saree-name {
         font-weight: 600;
         margin: 0;
         color: #f3e5ab;
-        font-size: 0.95rem;
-        line-height: 1.35;
-        height: 2.7em;
+        font-size: 0.98rem;
+        line-height: 1.4;
+        height: 2.8em;
         overflow: hidden;
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -178,80 +180,141 @@ st.markdown("""
         font-family: 'Cinzel', serif;
     }
     .saree-sku {
-        margin: 4px 0 0 0;
+        margin: 6px 0 0 0;
         font-size: 0.72rem;
-        color: #888;
-        letter-spacing: 0.5px;
+        color: #71717a;
+        letter-spacing: 0.8px;
         text-transform: uppercase;
     }
     
     /* Similarity Score Badge (Glassmorphic Gold) */
     .score-badge {
-        background: rgba(230, 179, 37, 0.08) !important;
+        background: rgba(212, 175, 55, 0.07) !important;
         backdrop-filter: blur(4px) !important;
-        border: 1px solid rgba(230, 179, 37, 0.35) !important;
-        color: #f5d061 !important;
-        padding: 6px 14px !important;
+        border: 1px solid rgba(212, 175, 55, 0.35) !important;
+        color: #ffd54f !important;
+        padding: 6px 16px !important;
         border-radius: 30px !important;
         font-weight: 600 !important;
         font-size: 0.76rem !important;
         display: inline-block;
-        box-shadow: 0 2px 10px rgba(230, 179, 37, 0.05) !important;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.05) !important;
+        letter-spacing: 0.3px;
     }
     
     /* Breakdown Scores */
     .breakdown-text {
         font-size: 0.72rem !important;
-        color: #9ca3af !important;
-        margin-top: 6px !important;
+        color: #a1a1aa !important;
+        margin-top: 8px !important;
         letter-spacing: 0.2px !important;
     }
     
     /* Premium Buy Button */
     .buy-button {
         display: inline-block !important;
-        margin-top: 14px !important;
-        background: linear-gradient(135deg, #aa7c11, #e6b325) !important;
-        color: #0d0e12 !important;
-        padding: 8px 20px !important;
-        border-radius: 8px !important;
-        font-size: 0.78rem !important;
+        margin-top: 16px !important;
+        background: linear-gradient(135deg, #aa7c11, #d4af37) !important;
+        color: #07080a !important;
+        padding: 10px 24px !important;
+        border-radius: 12px !important;
+        font-size: 0.8rem !important;
         font-weight: 700 !important;
         text-decoration: none !important;
-        transition: all 0.3s ease !important;
-        box-shadow: 0 4px 15px rgba(230, 179, 37, 0.2) !important;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25) !important;
         border: none !important;
+        letter-spacing: 0.5px;
     }
     .buy-button:hover {
-        transform: translateY(-2px) !important;
-        box-shadow: 0 6px 22px rgba(230, 179, 37, 0.5) !important;
+        transform: translateY(-3px) !important;
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5) !important;
         color: #000000 !important;
     }
     
     /* Streamlit Form Input styling */
     .stTextInput > div > div > input {
-        background-color: rgba(255, 255, 255, 0.02) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        border-radius: 8px !important;
+        background-color: rgba(255, 255, 255, 0.015) !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        border-radius: 12px !important;
         color: #f3f4f6 !important;
-        backdrop-filter: blur(5px) !important;
+        backdrop-filter: blur(10px) !important;
+        padding: 12px 16px !important;
+        transition: all 0.3s ease !important;
     }
     .stTextInput > div > div > input:focus {
-        border-color: rgba(230, 179, 37, 0.6) !important;
-        box-shadow: 0 0 10px rgba(230, 179, 37, 0.2) !important;
+        border-color: rgba(212, 175, 55, 0.5) !important;
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.15) !important;
+        background-color: rgba(255, 255, 255, 0.03) !important;
+    }
+    
+    /* Streamlit File Uploader Box */
+    [data-testid="stFileUploader"] {
+        border: 1px dashed rgba(212, 175, 55, 0.3) !important;
+        background: rgba(255, 255, 255, 0.01) !important;
+        border-radius: 16px !important;
+        padding: 15px !important;
+        backdrop-filter: blur(5px) !important;
+        transition: all 0.3s ease !important;
+    }
+    [data-testid="stFileUploader"]:hover {
+        border-color: rgba(212, 175, 55, 0.7) !important;
+        background: rgba(255, 255, 255, 0.02) !important;
     }
     
     /* Sidebar glassmorphism */
     section[data-testid="stSidebar"] {
-        background: rgba(13, 14, 18, 0.8) !important;
-        backdrop-filter: blur(20px) !important;
-        -webkit-backdrop-filter: blur(20px) !important;
-        border-right: 1px solid rgba(255, 255, 255, 0.04) !important;
+        background: linear-gradient(180deg, rgba(13, 14, 18, 0.85) 0%, rgba(7, 8, 10, 0.95) 100%) !important;
+        backdrop-filter: blur(25px) !important;
+        -webkit-backdrop-filter: blur(25px) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.03) !important;
+        box-shadow: 5px 0 30px rgba(0, 0, 0, 0.5) !important;
+    }
+    
+    /* Sidebar sections */
+    .stSlider > label {
+        color: #f5d061 !important;
+        font-family: 'Cinzel', serif !important;
+        font-size: 0.85rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.5px;
+    }
+    
+    /* Tabs styling */
+    .stTabs [data-baseweb="tab-list"] {
+        background-color: transparent !important;
+        gap: 10px;
+    }
+    .stTabs [data-baseweb="tab"] {
+        background-color: rgba(255, 255, 255, 0.01) !important;
+        border: 1px solid rgba(255, 255, 255, 0.04) !important;
+        color: #a1a1aa !important;
+        border-radius: 10px !important;
+        padding: 8px 16px !important;
+        transition: all 0.3s ease !important;
+    }
+    .stTabs [data-baseweb="tab"]:hover {
+        color: #f5d061 !important;
+        border-color: rgba(212, 175, 55, 0.3) !important;
+        background-color: rgba(255, 255, 255, 0.02) !important;
+    }
+    .stTabs [aria-selected="true"] {
+        color: #07080a !important;
+        background: linear-gradient(135deg, #ffe082, #d4af37) !important;
+        border-color: transparent !important;
+        font-weight: bold !important;
+    }
+
+    /* Container border styling */
+    [data-testid="stForm"] {
+        border: 1px solid rgba(255, 255, 255, 0.04) !important;
+        background: rgba(255, 255, 255, 0.01) !important;
+        border-radius: 20px !important;
     }
     
     /* Divider styling */
     hr {
-        border-color: rgba(230, 179, 37, 0.15) !important;
+        border-color: rgba(212, 175, 55, 0.12) !important;
     }
 </style>
 """, unsafe_allow_html=True)
