@@ -24,9 +24,14 @@ class SareeSearchEngine:
         self.clip_index = faiss.read_index(clip_index_path)
         self.color_index = faiss.read_index(color_index_path)
         
-        # Load CLIP model
-        self.model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").to(self.device)
-        self.processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+        # Load CLIP model (Offline-first to prevent network hangs)
+        try:
+            self.model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32", local_files_only=True).to(self.device)
+            self.processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32", local_files_only=True)
+        except Exception:
+            print("Cached CLIP model not found. Fetching from Hugging Face Hub...")
+            self.model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").to(self.device)
+            self.processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
         
     def get_color_layout_embedding(self, image, grid_size=(8, 8)):
         img_resized = image.resize(grid_size, Image.Resampling.LANCZOS)
