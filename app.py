@@ -271,11 +271,14 @@ if "current_image_path" not in st.session_state:
 st.sidebar.image("https://img.icons8.com/color/96/saree.png", width=80)
 st.sidebar.header("Agent Settings")
 
-# API Key
-api_key = st.sidebar.text_input("Gemini API Key", type="password", help="Enter your Gemini API key to enable the conversational agent.")
+# API Key Configuration
+api_key = os.environ.get("GEMINI_API_KEY", "")
 if not api_key:
-    # Try loading from env variable
-    api_key = os.environ.get("GEMINI_API_KEY", "")
+    api_key = st.sidebar.text_input("Gemini API Key", type="password", help="Enter your Gemini API key to enable the conversational agent.")
+else:
+    st.sidebar.markdown("""<div style="background: rgba(230, 179, 37, 0.08); border: 1px solid rgba(230, 179, 37, 0.35); border-radius: 8px; padding: 10px 14px; margin-bottom: 15px;">
+<span style="color: #f5d061; font-size: 0.82rem; font-weight: 600; display: block; text-align: center;">🤖 Agent Status: Active ✨</span>
+</div>""", unsafe_allow_html=True)
 
 # Search Weights Setup
 st.sidebar.subheader("Similarity Weights")
