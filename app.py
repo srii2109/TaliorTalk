@@ -8,34 +8,34 @@ from src.agent import SareeAgent
 
 # Set page configuration
 st.set_page_config(
-    page_title="TailorTalk | Luxury Saree Search Agent",
+    page_title="TailorTalk | Luxury AI Saree Stylist",
     page_icon="🏮",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Inject custom CSS for premium fashion aesthetics (High-Fidelity Glassmorphism & Visual Animations)
+# Inject custom CSS to replicate the high-end plum/rose-gold luxury design
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
-    /* Hide Streamlit default headers/footers for total app immersion */
+    /* Hide Streamlit default UI components */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
     [data-testid="stHeader"] {background: rgba(0,0,0,0) !important;}
 
-    /* Main Layout with Luxury Animated Glow Background */
+    /* Premium Color Scheme and Background */
     .stApp {
-        background: radial-gradient(circle at 10% 15%, rgba(212, 175, 55, 0.12) 0%, transparent 35%),
-                    radial-gradient(circle at 90% 85%, rgba(186, 85, 211, 0.08) 0%, transparent 40%),
-                    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-                    #050608 !important;
+        background: radial-gradient(circle at 15% 20%, rgba(176, 62, 122, 0.15) 0%, transparent 40%),
+                    radial-gradient(circle at 85% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+                    radial-gradient(circle at 50% 50%, rgba(176, 62, 122, 0.04) 0%, transparent 60%),
+                    #0e030a !important;
         color: #f3f4f6;
         font-family: 'Plus Jakarta Sans', sans-serif;
     }
     
-    /* Scrollbars customization */
+    /* Scrollbars */
     ::-webkit-scrollbar {
         width: 6px;
         height: 6px;
@@ -44,67 +44,128 @@ st.markdown("""
         background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-        background: rgba(212, 175, 55, 0.25);
+        background: rgba(176, 62, 122, 0.3);
         border-radius: 10px;
     }
     ::-webkit-scrollbar-thumb:hover {
-        background: rgba(212, 175, 55, 0.5);
+        background: rgba(212, 175, 55, 0.4);
     }
     
-    /* Header and Titles */
+    /* Typography */
     h1, h2, h3, .title-text {
         font-family: 'Cinzel', serif !important;
         background: linear-gradient(135deg, #ffe082, #d4af37, #aa7c11);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        font-weight: 900;
-        letter-spacing: 1.5px;
-        text-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+        font-weight: 700;
+        letter-spacing: 0.5px;
     }
     
-    /* Custom Luxury Hero Banner */
-    .hero-banner {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.005)) !important;
+    /* Hero Banner Container */
+    .hero-container {
+        background: linear-gradient(135deg, rgba(35, 10, 26, 0.65), rgba(20, 5, 15, 0.85)) !important;
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(212, 175, 55, 0.25) !important;
-        border-radius: 24px !important;
+        border: 1px solid rgba(176, 62, 122, 0.25) !important;
+        border-radius: 28px !important;
         padding: 30px !important;
-        margin-bottom: 35px !important;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(212, 175, 55, 0.05) !important;
-        position: relative;
-        overflow: hidden;
-    }
-    .hero-banner::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; right: 0; height: 2px;
-        background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.8), transparent);
+        margin-bottom: 30px !important;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6) !important;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
     }
     
-    /* Panel Layout Design */
-    .dashboard-panel {
-        background: rgba(255, 255, 255, 0.015) !important;
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    /* Segmented Header Cards */
+    .header-card-grid {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+    .header-feature-card {
+        background: rgba(255, 255, 255, 0.02) !important;
+        border: 1px solid rgba(255, 255, 255, 0.04) !important;
+        padding: 16px 20px !important;
+        border-radius: 16px !important;
+        backdrop-filter: blur(10px) !important;
+        width: 220px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
+    }
+    .feature-title {
+        color: #f4ebd0 !important;
+        font-family: 'Cinzel', serif !important;
+        font-size: 0.88rem !important;
+        font-weight: bold !important;
+        margin: 5px 0 2px 0 !important;
+    }
+    .feature-desc {
+        color: #a1a1aa !important;
+        font-size: 0.78rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    /* Panel Layout styling */
+    .stpanel {
+        background: rgba(26, 6, 20, 0.45) !important;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(176, 62, 122, 0.15) !important;
         border-radius: 24px !important;
         padding: 24px !important;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3) !important;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) !important;
         margin-bottom: 25px !important;
     }
     
-    /* Custom Chat Container */
-    .chat-container {
-        max-height: 480px;
+    /* Title Icons */
+    .panel-title {
+        font-family: 'Cinzel', serif !important;
+        font-size: 1.3rem !important;
+        color: #f3ebd0 !important;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 8px;
+    }
+    
+    /* Suggestion Chips */
+    .chip-container {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+    .suggestion-chip {
+        background: rgba(176, 62, 122, 0.08) !important;
+        border: 1px solid rgba(176, 62, 122, 0.25) !important;
+        color: #f4ebd0 !important;
+        padding: 6px 14px !important;
+        border-radius: 30px !important;
+        font-size: 0.76rem !important;
+        font-weight: 500 !important;
+        cursor: pointer;
+        transition: all 0.3s ease !important;
+    }
+    .suggestion-chip:hover {
+        background: rgba(176, 62, 122, 0.2) !important;
+        border-color: rgba(212, 175, 55, 0.4) !important;
+        transform: translateY(-1px);
+    }
+    
+    /* Chat display */
+    .chat-display {
+        max-height: 400px;
         overflow-y: auto;
         padding: 10px 5px;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 16px;
         margin-bottom: 15px;
     }
-    
     .chat-row {
         display: flex;
         width: 100%;
@@ -114,14 +175,13 @@ st.markdown("""
         from { opacity: 0; transform: translateY(15px); }
         to { opacity: 1; transform: translateY(0); }
     }
-    
     .user-row { justify-content: flex-end; }
     .assistant-row { justify-content: flex-start; }
     
     .chat-bubble {
         max-width: 82%;
         padding: 16px 20px;
-        border-radius: 20px;
+        border-radius: 24px;
         font-size: 0.94rem;
         line-height: 1.5;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
@@ -129,40 +189,52 @@ st.markdown("""
         -webkit-backdrop-filter: blur(10px);
     }
     .user-bubble {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
+        background: rgba(255, 255, 255, 0.02) ;
         border: 1px solid rgba(255, 255, 255, 0.08);
-        border-bottom-right-radius: 3px;
+        border-bottom-right-radius: 4px;
         color: #f3f4f6;
     }
     .assistant-bubble {
-        background: linear-gradient(135deg, rgba(212, 175, 55, 0.06), rgba(212, 175, 55, 0.015));
-        border: 1px solid rgba(212, 175, 55, 0.3);
-        border-bottom-left-radius: 3px;
+        background: rgba(176, 62, 122, 0.04);
+        border: 1px solid rgba(176, 62, 122, 0.25);
+        border-bottom-left-radius: 4px;
         color: #f4ebd0;
-        box-shadow: 0 8px 30px rgba(212, 175, 55, 0.05);
+        display: flex;
+        gap: 15px;
+        align-items: flex-start;
     }
-    .bubble-sender {
-        font-size: 0.68rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        margin-bottom: 6px;
-        letter-spacing: 1.5px;
+    .monogram-avatar {
+        background: linear-gradient(135deg, #aa7c11, #d4af37);
+        color: #0e030a;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Cinzel', serif;
+        font-weight: 900;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 12px rgba(212,175,55,0.3);
+        flex-shrink: 0;
     }
-    .user-bubble .bubble-sender { color: #a1a1aa; }
-    .assistant-bubble .bubble-sender { color: #ffe082; }
+    .bubble-inner-content {
+        display: flex;
+        flex-direction: column;
+    }
     
-    /* Saree Glass Card */
+    /* Custom Saree Image Card */
     .saree-card {
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.005)) !important;
         backdrop-filter: blur(25px) saturate(180%) !important;
         -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
-        border: 1px solid rgba(255, 255, 255, 0.05) !important;
-        border-radius: 24px !important;
+        border: 1px solid rgba(176, 62, 122, 0.15) !important;
+        border-radius: 28px !important;
         padding: 0px !important;
         text-align: center !important;
         transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
         margin-bottom: 25px !important;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4) !important;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45) !important;
         overflow: hidden !important;
         display: flex;
         flex-direction: column;
@@ -170,10 +242,9 @@ st.markdown("""
     .saree-card:hover {
         transform: translateY(-10px) scale(1.02) !important;
         border-color: rgba(212, 175, 55, 0.4) !important;
-        box-shadow: 0 20px 50px rgba(212, 175, 55, 0.18) !important;
-        background: rgba(255, 255, 255, 0.03) !important;
+        box-shadow: 0 20px 50px rgba(212, 175, 55, 0.22) !important;
+        background: rgba(255, 255, 255, 0.035) !important;
     }
-    
     .saree-img-container {
         width: 100%;
         height: 290px;
@@ -191,7 +262,6 @@ st.markdown("""
     .saree-card:hover .saree-img {
         transform: scale(1.08);
     }
-    
     .saree-details {
         padding: 20px;
         display: flex;
@@ -201,7 +271,6 @@ st.markdown("""
         text-align: center;
         background: rgba(7, 8, 10, 0.2);
     }
-    
     .saree-name {
         font-weight: 600;
         margin: 0;
@@ -222,30 +291,24 @@ st.markdown("""
         letter-spacing: 0.8px;
         text-transform: uppercase;
     }
-    
-    /* Similarity Score Badge (Glassmorphic Gold) */
     .score-badge {
-        background: rgba(212, 175, 55, 0.08) !important;
+        background: rgba(212, 175, 55, 0.07) !important;
         backdrop-filter: blur(4px) !important;
         border: 1px solid rgba(212, 175, 55, 0.35) !important;
         color: #ffd54f !important;
-        padding: 6px 14px !important;
+        padding: 6px 16px !important;
         border-radius: 30px !important;
         font-weight: 600 !important;
         font-size: 0.75rem !important;
         display: inline-block;
         box-shadow: 0 4px 15px rgba(212, 175, 55, 0.05) !important;
     }
-    
-    /* Breakdown Scores */
     .breakdown-text {
         font-size: 0.7rem !important;
         color: #a1a1aa !important;
         margin-top: 6px !important;
         letter-spacing: 0.2px !important;
     }
-    
-    /* Premium Buy Button */
     .buy-button {
         display: inline-block !important;
         margin-top: 14px !important;
@@ -259,7 +322,6 @@ st.markdown("""
         transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
         box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25) !important;
         border: none !important;
-        letter-spacing: 0.5px;
     }
     .buy-button:hover {
         transform: translateY(-2px) !important;
@@ -267,36 +329,20 @@ st.markdown("""
         color: #000000 !important;
     }
     
-    /* Form inputs custom styling */
-    .stTextInput > div > div > input {
-        background-color: rgba(255, 255, 255, 0.015) !important;
-        border: 1px solid rgba(255, 255, 255, 0.05) !important;
-        border-radius: 12px !important;
-        color: #f3f4f6 !important;
-        backdrop-filter: blur(10px) !important;
-        padding: 12px 16px !important;
+    /* File Uploader styling */
+    [data-testid="stFileUploader"] {
+        border: 1px dashed rgba(176, 62, 122, 0.35) !important;
+        background: rgba(255, 255, 255, 0.008) !important;
+        border-radius: 20px !important;
+        padding: 24px !important;
         transition: all 0.3s ease !important;
     }
-    .stTextInput > div > div > input:focus {
-        border-color: rgba(212, 175, 55, 0.5) !important;
-        box-shadow: 0 0 15px rgba(212, 175, 55, 0.15) !important;
-        background-color: rgba(255, 255, 255, 0.03) !important;
-    }
-    
-    /* File uploader customizing */
-    [data-testid="stFileUploader"] {
-        border: 1px dashed rgba(212, 175, 55, 0.3) !important;
-        background: rgba(255, 255, 255, 0.01) !important;
-        border-radius: 16px !important;
-        padding: 16px !important;
-        backdrop-filter: blur(5px) !important;
-    }
     [data-testid="stFileUploader"]:hover {
-        border-color: rgba(212, 175, 55, 0.7) !important;
-        background: rgba(255, 255, 255, 0.02) !important;
+        border-color: rgba(212, 175, 55, 0.5) !important;
+        background: rgba(255, 255, 255, 0.015) !important;
     }
     
-    /* Tabs custom styling */
+    /* Custom Tabs */
     .stTabs [data-baseweb="tab-list"] {
         background-color: transparent !important;
         gap: 12px;
@@ -311,60 +357,107 @@ st.markdown("""
         transition: all 0.3s ease !important;
         font-family: 'Cinzel', serif !important;
         font-size: 0.8rem !important;
-        letter-spacing: 0.5px;
     }
     .stTabs [data-baseweb="tab"]:hover {
-        color: #f5d061 !important;
-        border-color: rgba(212, 175, 55, 0.3) !important;
+        color: #ffe082 !important;
+        border-color: rgba(176, 62, 122, 0.3) !important;
     }
     .stTabs [aria-selected="true"] {
-        color: #07080a !important;
-        background: linear-gradient(135deg, #ffe082, #d4af37) !important;
-        border-color: transparent !important;
+        color: #ffffff !important;
+        background: linear-gradient(135deg, rgba(176, 62, 122, 0.6), rgba(176, 62, 122, 0.3)) !important;
+        border: 1px solid rgba(176, 62, 122, 0.5) !important;
         font-weight: bold !important;
     }
     
-    /* Action button customization */
+    /* High-End Glowing Search Button */
     .stButton > button {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)) !important;
-        border: 1px solid rgba(212, 175, 55, 0.35) !important;
-        color: #f5d061 !important;
-        border-radius: 12px !important;
-        padding: 10px 24px !important;
-        font-weight: 600 !important;
-        transition: all 0.3s ease !important;
+        background: linear-gradient(90deg, #a73a6c 0%, #e28e57 100%) !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 14px !important;
+        padding: 12px 28px !important;
+        font-weight: bold !important;
         font-family: 'Cinzel', serif !important;
         letter-spacing: 1px;
+        font-size: 0.88rem !important;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        box-shadow: 0 6px 20px rgba(176, 62, 122, 0.35) !important;
+        width: 100% !important;
     }
     .stButton > button:hover {
-        background: linear-gradient(135deg, #ffe082, #d4af37) !important;
-        color: #07080a !important;
-        border-color: transparent !important;
-        box-shadow: 0 0 15px rgba(212, 175, 55, 0.3) !important;
-        transform: translateY(-2px);
+        transform: translateY(-2px) !important;
+        box-shadow: 0 10px 30px rgba(176, 62, 122, 0.6) !important;
+        filter: brightness(1.1);
+    }
+    
+    /* Form input styling */
+    .stTextInput > div > div > input {
+        background-color: rgba(255, 255, 255, 0.015) !important;
+        border: 1px solid rgba(255, 255, 255, 0.06) !important;
+        border-radius: 14px !important;
+        color: #f3f4f6 !important;
+        backdrop-filter: blur(10px) !important;
+        padding: 12px 18px !important;
+    }
+    .stTextInput > div > div > input:focus {
+        border-color: rgba(176, 62, 122, 0.6) !important;
+        box-shadow: 0 0 15px rgba(176, 62, 122, 0.25) !important;
     }
     
     /* Sidebar glassmorphism */
     section[data-testid="stSidebar"] {
-        background: linear-gradient(180deg, rgba(13, 14, 18, 0.85) 0%, rgba(7, 8, 10, 0.95) 100%) !important;
+        background: linear-gradient(180deg, rgba(20, 5, 15, 0.9) 0%, rgba(10, 2, 7, 0.98) 100%) !important;
         backdrop-filter: blur(25px) !important;
-        border-right: 1px solid rgba(255, 255, 255, 0.03) !important;
-        box-shadow: 5px 0 35px rgba(0, 0, 0, 0.5) !important;
+        border-right: 1px solid rgba(176, 62, 122, 0.12) !important;
+        box-shadow: 5px 0 35px rgba(0, 0, 0, 0.6) !important;
     }
     .stSlider > label {
         color: #f5d061 !important;
         font-family: 'Cinzel', serif !important;
         font-size: 0.85rem !important;
-        font-weight: 600 !important;
     }
     
-    /* General streamlit layouts container hiding borders */
+    /* Value proposition footer bar */
+    .trust-footer-bar {
+        background: linear-gradient(90deg, rgba(35, 10, 26, 0.7), rgba(20, 5, 15, 0.9)) !important;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(176, 62, 122, 0.2) !important;
+        border-radius: 20px !important;
+        padding: 18px 30px !important;
+        margin-top: 40px !important;
+        margin-bottom: 20px !important;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.4) !important;
+    }
+    .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .trust-title {
+        font-family: 'Cinzel', serif;
+        font-size: 0.84rem;
+        color: #f4ebd0;
+        font-weight: bold;
+        margin: 0;
+    }
+    .trust-desc {
+        font-size: 0.72rem;
+        color: #828290;
+        margin: 0;
+    }
+    
     [data-testid="stForm"] {
         border: none !important;
         background: transparent !important;
     }
     hr {
-        border-color: rgba(212, 175, 55, 0.12) !important;
+        border-color: rgba(176, 62, 122, 0.15) !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -414,23 +507,52 @@ def load_search_engine():
         st.error(f"Error loading search engine: {e}. Did you run indexing (build_index.py)?")
         return None
 
-# Main App Header (Luxury Glassmorphic Hero Banner)
+# Main App Header (Luxury Glassmorphic Hero Banner matching Figma design)
 st.markdown("""
-<div class="hero-banner">
-    <div style="display: flex; align-items: center; gap: 15px;">
-        <span style="font-size: 2.2rem; filter: drop-shadow(0 0 10px rgba(212,175,55,0.4));">🏮</span>
-        <h1 style="margin: 0; font-size: 2.3rem;">TailorTalk</h1>
+<div class="hero-container">
+    <div style="flex: 1; min-width: 320px; display: flex; align-items: center; gap: 20px;">
+        <!-- Vector Hanging Lanterns & Silhouette SVG Decoration -->
+        <svg width="60" height="70" viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.95; filter: drop-shadow(0 0 10px rgba(212,175,55,0.4));">
+            <line x1="12" y1="0" x2="12" y2="40" stroke="#d4af37" stroke-width="1.5"/>
+            <path d="M6 40C6 36.6863 8.68629 34 12 34C15.3137 34 18 36.6863 18 40V50C18 53.3137 15.3137 56 12 56C8.68629 56 6 53.3137 6 50V40Z" fill="#aa7c11" stroke="#ffe082" stroke-width="1"/>
+            <path d="M12 56V65" stroke="#ffe082" stroke-width="1"/>
+            <circle cx="12" cy="65" r="2" fill="#ffe082"/>
+            
+            <line x1="42" y1="0" x2="42" y2="25" stroke="#d4af37" stroke-width="1.5"/>
+            <path d="M36 25C36 21.6863 38.6863 19 42 19C45.3137 19 48 21.6863 48 25V35C48 38.3137 45.3137 41 42 41C38.6863 41 36 38.3137 36 35V25Z" fill="#aa7c11" stroke="#ffe082" stroke-width="1"/>
+            <path d="M42 41V50" stroke="#ffe082" stroke-width="1"/>
+            <circle cx="42" cy="50" r="1.5" fill="#ffe082"/>
+        </svg>
+        <div>
+            <h1 style="margin: 0; font-size: 2.8rem; line-height: 1.1;">TailorTalk</h1>
+            <p style="margin: 5px 0 0 0; color: #ffd54f; font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 1px; font-weight: 500;">Your AI Stylist for Timeless Saree Elegance</p>
+        </div>
     </div>
-    <p style="margin: 10px 0 0 0; color: #a1a1aa; font-size: 0.96rem; line-height: 1.5; font-family: 'Plus Jakarta Sans', sans-serif;">
-        Experience the future of Indian fashion discovery. Upload a design or describe your styling preferences, and our conversational AI agent will query a fine-grained vector catalogue of sarees to find visual and semantic matches instantly.
-    </p>
+    
+    <div class="header-card-grid">
+        <div class="header-feature-card">
+            <span style="font-size: 1.1rem;">✨</span>
+            <div class="feature-title">AI-Powered</div>
+            <div class="feature-desc">Smart understanding of your fashion style</div>
+        </div>
+        <div class="header-feature-card">
+            <span style="font-size: 1.1rem;">⚡</span>
+            <div class="feature-title">Instant Matches</div>
+            <div class="feature-desc">Find perfect sarees in a few seconds</div>
+        </div>
+        <div class="header-feature-card">
+            <span style="font-size: 1.1rem;">🎨</span>
+            <div class="feature-title">Curated Catalog</div>
+            <div class="feature-desc">Premium sarees from trusted artisans</div>
+        </div>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
 # Initialize Session State variables
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "Namaste! I am TailorTalk. Upload a saree image or describe what you're looking for, and I'll find the perfect match from our catalogue."}
+        {"role": "assistant", "content": "Namaste! I am TailorTalk, your AI fashion stylist. Tell me what kind of saree you're looking for, or upload an image to find visually matching designs!"}
     ]
 if "search_results" not in st.session_state:
     st.session_state.search_results = None
@@ -468,7 +590,7 @@ else:
 st.sidebar.caption(f"Normalized Weights: Style: {w_clip_norm:.2f} | Color: {w_color_norm:.2f}")
 
 # Limit matches
-limit_matches = st.sidebar.slider("Number of Matches", 1, 10, 5)
+limit_matches = st.sidebar.slider("Number of Matches", 1, 10, 6)
 
 # Clear chat button
 if st.sidebar.button("Clear Chat History", use_container_width=True):
@@ -487,15 +609,112 @@ if st.sidebar.button("Clear Chat History", use_container_width=True):
 # Load visual search engine
 search_engine = load_search_engine()
 
-# Main Application Layout: Two Columns with panels
+# Main Application Layout: Two Columns
 col_chat, col_results = st.columns([1, 1], gap="large")
 
-# Right Column: Visual Similarity Search Results
+# Left Column: Conversational Assistant
+with col_chat:
+    st.markdown("""
+    <div class="panel-title">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span>Conversational Assistant</span>
+    </div>
+    <p style="font-size: 0.84rem; color: #8c828e; margin: -5px 0 15px 0;">
+        Describe what you're looking for, or upload an image and ask for style variations.
+    </p>
+    """, unsafe_allow_html=True)
+    
+    # Suggestion Chips
+    st.markdown("<span style='font-size: 0.76rem; color: #a1a1aa; font-family: Cinzel;'>Try asking:</span>", unsafe_allow_html=True)
+    st.markdown("""<div class="chip-container">
+        <span class="suggestion-chip">Pink saree with gold border</span>
+        <span class="suggestion-chip">Silk saree for wedding</span>
+        <span class="suggestion-chip">Traditional Kanjeevaram</span>
+        <span class="suggestion-chip">Cotton saree for summer</span>
+    </div>""", unsafe_allow_html=True)
+
+    # Custom HTML Chat Log Renderer
+    chat_html = '<div class="chat-display">'
+    for msg in st.session_state.messages:
+        if msg["role"] == "user":
+            chat_html += f"""
+            <div class="chat-row user-row">
+                <div class="chat-bubble user-bubble">
+                    <div class="bubble-sender">You</div>
+                    <div class="bubble-content">{msg['content']}</div>
+                </div>
+            </div>
+            """
+        else:
+            chat_html += f"""
+            <div class="chat-row assistant-row">
+                <div class="chat-bubble assistant-bubble">
+                    <div class="monogram-avatar">T</div>
+                    <div class="bubble-inner-content">
+                        <div class="bubble-sender">TailorTalk AI ✨</div>
+                        <div class="bubble-content">{msg['content']}</div>
+                    </div>
+                </div>
+            </div>
+            """
+    chat_html += '</div>'
+    st.markdown(chat_html, unsafe_allow_html=True)
+            
+    # Check if Agent API key is present
+    if not api_key:
+        st.warning("Please enter your Gemini API Key in the sidebar to enable natural conversation and agent tools.")
+        st.stop()
+        
+    # Instantiate agent
+    if search_engine is not None:
+        agent = SareeAgent(api_key=api_key, search_engine=search_engine)
+    else:
+        agent = None
+        st.error("Search engine is not loaded. Indexing is required.")
+        
+    # Chat Input
+    if agent is not None:
+        user_input = st.chat_input("Describe your dream saree...")
+        
+        if user_input:
+            st.session_state.messages.append({"role": "user", "content": user_input})
+            
+            with st.spinner("TailorTalk is thinking..."):
+                try:
+                    img_path_query = st.session_state.current_image_path if st.session_state.current_image_path else None
+                    
+                    response = agent.run_chat(
+                        messages_history=st.session_state.messages[:-1],
+                        user_message=user_input,
+                        temp_image_path=img_path_query
+                    )
+                    
+                    if response["tool_called"] and response["tool_results"]:
+                        st.session_state.search_results = response["tool_results"]
+                        
+                    st.session_state.messages.append({"role": "assistant", "content": response["response_text"]})
+                    st.rerun()
+                    
+                except Exception as e:
+                    st.error(f"Agent error: {e}")
+
+# Right Column: Visual Search Gallery
 with col_results:
-    st.markdown("""<div class="dashboard-panel">
-<h2 style="font-family: 'Cinzel', serif; font-size: 1.4rem; margin: 0; color: #ffe082; display: flex; align-items: center; gap: 10px;">🛍️ Visual Search Gallery</h2>
-<p style="font-size: 0.82rem; color: #888; margin: 5px 0 0 0;">Upload design images or image links to discover visual and color matches.</p>
-</div>""", unsafe_allow_html=True)
+    st.markdown("""
+    <div class="panel-title">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+        </svg>
+        <span>Visual Search Gallery</span>
+    </div>
+    <p style="font-size: 0.84rem; color: #8c828e; margin: -5px 0 15px 0;">
+        Upload a design image or paste any image URL to discover similar sarees from our collection.
+    </p>
+    """, unsafe_allow_html=True)
     
     # Image Input section (Upload or link)
     img_tab_upload, img_tab_url = st.tabs(["Upload Image", "Image URL"])
@@ -503,6 +722,7 @@ with col_results:
     query_image = None
     
     with img_tab_upload:
+        # Custom structured drag and drop upload field
         uploaded_file = st.file_uploader("Upload a saree image...", type=["jpg", "jpeg", "png"])
         if uploaded_file is not None:
             temp_path = save_uploaded_file(uploaded_file)
@@ -530,7 +750,7 @@ with col_results:
                 st.error(f"Failed to load image from URL: {e}")
                 
     # Visual Search Action Button (Standalone search without agent)
-    if st.button("Run Visual Search", use_container_width=True):
+    if st.button("Run Visual Search"):
         if query_image is not None and search_engine is not None:
             with st.spinner("Searching matching sarees..."):
                 results = search_engine.search(
@@ -607,75 +827,36 @@ with col_results:
     else:
         st.info("No active search results. Perform a Visual Search or chat with the agent to populate this gallery.")
 
-# Left Column: Chat Assistant
-with col_chat:
-    st.markdown("""<div class="dashboard-panel">
-<h2 style="font-family: 'Cinzel', serif; font-size: 1.4rem; margin: 0; color: #ffe082; display: flex; align-items: center; gap: 10px;">💬 Conversational Assistant</h2>
-<p style="font-size: 0.82rem; color: #888; margin: 5px 0 0 0;">Talk to TailorTalk to describe styling requests, get match reviews, or query sarees.</p>
-</div>""", unsafe_allow_html=True)
-    
-    # Custom HTML Chat Log Renderer
-    chat_html = '<div class="chat-container">'
-    for msg in st.session_state.messages:
-        if msg["role"] == "user":
-            chat_html += f"""
-            <div class="chat-row user-row">
-                <div class="chat-bubble user-bubble">
-                    <div class="bubble-sender">You</div>
-                    <div class="bubble-content">{msg['content']}</div>
-                </div>
-            </div>
-            """
-        else:
-            chat_html += f"""
-            <div class="chat-row assistant-row">
-                <div class="chat-bubble assistant-bubble">
-                    <div class="bubble-sender">TailorTalk AI ✨</div>
-                    <div class="bubble-content">{msg['content']}</div>
-                </div>
-            </div>
-            """
-    chat_html += '</div>'
-    st.markdown(chat_html, unsafe_allow_html=True)
-            
-    # Check if Agent API key is present
-    if not api_key:
-        st.warning("Please enter your Gemini API Key in the sidebar to enable natural conversation and agent tools.")
-        st.stop()
-        
-    # Instantiate agent
-    if search_engine is not None:
-        agent = SareeAgent(api_key=api_key, search_engine=search_engine)
-    else:
-        agent = None
-        st.error("Search engine is not loaded. Indexing is required.")
-        
-    # Chat Input
-    if agent is not None:
-        user_input = st.chat_input("Ask TailorTalk (e.g. 'Show me pink sarees with gold borders' or 'Find traditional silk sarees')")
-        
-        if user_input:
-            # 1. Display user message
-            st.session_state.messages.append({"role": "user", "content": user_input})
-            
-            # 2. Run agent response
-            with st.spinner("TailorTalk is thinking..."):
-                try:
-                    img_path_query = st.session_state.current_image_path if st.session_state.current_image_path else None
-                    
-                    response = agent.run_chat(
-                        messages_history=st.session_state.messages[:-1],
-                        user_message=user_input,
-                        temp_image_path=img_path_query
-                    )
-                    
-                    # If the agent called the visual search tool behind the scenes, update UI results
-                    if response["tool_called"] and response["tool_results"]:
-                        st.session_state.search_results = response["tool_results"]
-                        
-                    # Save assistant response
-                    st.session_state.messages.append({"role": "assistant", "content": response["response_text"]})
-                    st.rerun()
-                    
-                except Exception as e:
-                    st.error(f"Agent error: {e}")
+# Value Proposition Trust Footer Bar
+st.markdown("""
+<div class="trust-footer-bar">
+    <div class="trust-item">
+        <span style="font-size: 1.3rem;">🏺</span>
+        <div>
+            <div class="trust-title">1000+ Premium Sarees</div>
+            <div class="trust-desc">Curated catalog of pure silk and organza</div>
+        </div>
+    </div>
+    <div class="trust-item">
+        <span style="font-size: 1.3rem;">🧑‍🎨</span>
+        <div>
+            <div class="trust-title">Trusted Artisans</div>
+            <div class="trust-desc">Authentic handloom craftsmanship</div>
+        </div>
+    </div>
+    <div class="trust-item">
+        <span style="font-size: 1.3rem;">🛡️</span>
+        <div>
+            <div class="trust-title">Secure & Private</div>
+            <div class="trust-desc">Your personal style data is protected</div>
+        </div>
+    </div>
+    <div class="trust-item">
+        <span style="font-size: 1.3rem;">🤖</span>
+        <div>
+            <div class="trust-title">24/7 AI Assistant</div>
+            <div class="trust-desc">Always here to help you style</div>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
