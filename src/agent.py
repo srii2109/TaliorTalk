@@ -146,9 +146,11 @@ class SareeAgent:
                     
                     # Send function response back to Gemini to get the final conversational answer
                     response = chat.send_message(
-                        genai.types.Part.from_function_response(
-                            name=call.name,
-                            response={'result': result_str}
+                        genai.protos.Part(
+                            function_response=genai.protos.FunctionResponse(
+                                name=call.name,
+                                response={'result': result_str}
+                            )
                         )
                     )
                     break
