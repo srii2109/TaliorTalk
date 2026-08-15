@@ -3,6 +3,7 @@ transformers
 faiss-cpu
 streamlit
 google-generativeai
+google-genai
 pillow
 numpy
 pandas
