@@ -109,8 +109,19 @@ class SareeAgent:
         tool_called = False
         tool_results = None
         
-        if response.function_calls:
-            for call in response.function_calls:
+        # Safely extract function calls from candidates
+        function_calls = []
+        try:
+            if response.candidates and len(response.candidates) > 0:
+                parts = response.candidates[0].content.parts
+                for part in parts:
+                    if part.function_call:
+                        function_calls.append(part.function_call)
+        except Exception:
+            pass
+
+        if function_calls:
+            for call in function_calls:
                 if call.name == "search_similar_sarees":
                     tool_called = True
                     # Extract arguments
