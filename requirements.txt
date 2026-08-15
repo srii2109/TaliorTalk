@@ -1,0 +1,9 @@
+torch
+transformers
+faiss-cpu
+streamlit
+google-generativeai
+pillow
+numpy
+pandas
+requests
