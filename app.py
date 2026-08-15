@@ -23,9 +23,11 @@ st.markdown("""
     footer {visibility: hidden;}
     header {visibility: hidden;}
 
-    /* Main Layout */
+    /* Main Layout with Luxury Radial Glow */
     .stApp {
-        background-color: #0d0e12;
+        background: radial-gradient(circle at 15% 25%, rgba(230, 179, 37, 0.05) 0%, transparent 45%),
+                    radial-gradient(circle at 85% 75%, rgba(218, 112, 214, 0.03) 0%, transparent 45%),
+                    #0a0b0d !important;
         color: #f3f4f6;
         font-family: 'Inter', sans-serif;
     }
@@ -114,22 +116,73 @@ st.markdown("""
     
     /* Glassmorphism Saree Card */
     .saree-card {
-        background: rgba(255, 255, 255, 0.02) !important;
-        backdrop-filter: blur(12px) saturate(180%) !important;
-        -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
-        border: 1px solid rgba(255, 255, 255, 0.06) !important;
-        border-radius: 20px !important;
-        padding: 16px !important;
+        background: rgba(255, 255, 255, 0.015) !important;
+        backdrop-filter: blur(20px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        border-radius: 24px !important;
+        padding: 0px !important;
         text-align: center !important;
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-        margin-bottom: 24px !important;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        margin-bottom: 30px !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+        overflow: hidden !important;
+        display: flex;
+        flex-direction: column;
     }
     .saree-card:hover {
-        transform: translateY(-10px) scale(1.015) !important;
-        border-color: rgba(230, 179, 37, 0.45) !important;
-        box-shadow: 0 16px 40px rgba(230, 179, 37, 0.18) !important;
-        background: rgba(255, 255, 255, 0.04) !important;
+        transform: translateY(-12px) scale(1.02) !important;
+        border-color: rgba(230, 179, 37, 0.35) !important;
+        box-shadow: 0 20px 50px rgba(230, 179, 37, 0.12) !important;
+        background: rgba(255, 255, 255, 0.03) !important;
+    }
+    
+    .saree-img-container {
+        width: 100%;
+        height: 280px;
+        overflow: hidden;
+        position: relative;
+        background: #121318;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .saree-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .saree-card:hover .saree-img {
+        transform: scale(1.08);
+    }
+    
+    .saree-details {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+        text-align: center;
+    }
+    
+    .saree-name {
+        font-weight: 600;
+        margin: 0;
+        color: #f3e5ab;
+        font-size: 0.95rem;
+        line-height: 1.35;
+        height: 2.7em;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        font-family: 'Cinzel', serif;
+    }
+    .saree-sku {
+        margin: 4px 0 0 0;
+        font-size: 0.72rem;
+        color: #888;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
     }
     
     /* Similarity Score Badge (Glassmorphic Gold) */
@@ -142,8 +195,7 @@ st.markdown("""
         border-radius: 30px !important;
         font-weight: 600 !important;
         font-size: 0.76rem !important;
-        display: inline-block !important;
-        margin-top: 8px !important;
+        display: inline-block;
         box-shadow: 0 2px 10px rgba(230, 179, 37, 0.05) !important;
     }
     
@@ -383,12 +435,17 @@ with col_results:
         for idx, item in enumerate(st.session_state.search_results):
             col = cols[idx % 2]
             with col:
-                # Load saree image
+                # Load saree image as base64 for seamless embedding
                 img_path = item["relative_path"]
+                img_html = ""
                 if os.path.exists(img_path):
-                    saree_img = Image.open(img_path)
-                else:
-                    saree_img = None
+                    import base64
+                    try:
+                        with open(img_path, "rb") as img_file:
+                            img_base64 = base64.b64encode(img_file.read()).decode('utf-8')
+                        img_html = f'<div class="saree-img-container"><img src="data:image/webp;base64,{img_base64}" class="saree-img"/></div>'
+                    except Exception:
+                        img_html = ""
                     
                 # Format price details
                 price_html = ""
@@ -415,17 +472,20 @@ with col_results:
                 tags_html += '</div>'
 
                 card_html = f"""<div class="saree-card">
-<p style="font-weight: 600; margin: 0; color: #f3e5ab; font-size: 0.9rem; line-height: 1.2; height: 2.4em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{item.get('name', item['filename'])}</p>
-<p style="margin: 2px 0 0 0; font-size: 0.75rem; color: #888;">SKU: {item.get('sku', item['filename'])}</p>
+{img_html}
+<div class="saree-details">
+<p class="saree-name">{item.get('name', item['filename'])}</p>
+<p class="saree-sku">SKU: {item.get('sku', item['filename'])}</p>
 {tags_html}
 {price_html}
-<div class="score-badge" style="margin-top: 8px;">Match: {item['score']*100:.1f}%</div>
+<div style="margin-top: 10px;">
+<span class="score-badge">Match: {item['score']*100:.1f}%</span>
+</div>
 <div class="breakdown-text">Style: {item['clip_score']*100:.1f}% | Color: {item['color_score']*100:.1f}%</div>
 {buy_button_html}
+</div>
 </div>"""
                 st.markdown(card_html, unsafe_allow_html=True)
-                if saree_img:
-                    st.image(saree_img, width="stretch")
     else:
         st.info("No active search results. Perform a Visual Search or chat with the agent to populate this gallery.")
 
