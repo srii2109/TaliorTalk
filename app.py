@@ -508,46 +508,43 @@ def load_search_engine():
         return None
 
 # Main App Header (Luxury Glassmorphic Hero Banner matching Figma design)
-st.markdown("""
-<div class="hero-container">
-    <div style="flex: 1; min-width: 320px; display: flex; align-items: center; gap: 20px;">
-        <!-- Vector Hanging Lanterns & Silhouette SVG Decoration -->
-        <svg width="60" height="70" viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.95; filter: drop-shadow(0 0 10px rgba(212,175,55,0.4));">
-            <line x1="12" y1="0" x2="12" y2="40" stroke="#d4af37" stroke-width="1.5"/>
-            <path d="M6 40C6 36.6863 8.68629 34 12 34C15.3137 34 18 36.6863 18 40V50C18 53.3137 15.3137 56 12 56C8.68629 56 6 53.3137 6 50V40Z" fill="#aa7c11" stroke="#ffe082" stroke-width="1"/>
-            <path d="M12 56V65" stroke="#ffe082" stroke-width="1"/>
-            <circle cx="12" cy="65" r="2" fill="#ffe082"/>
-            
-            <line x1="42" y1="0" x2="42" y2="25" stroke="#d4af37" stroke-width="1.5"/>
-            <path d="M36 25C36 21.6863 38.6863 19 42 19C45.3137 19 48 21.6863 48 25V35C48 38.3137 45.3137 41 42 41C38.6863 41 36 38.3137 36 35V25Z" fill="#aa7c11" stroke="#ffe082" stroke-width="1"/>
-            <path d="M42 41V50" stroke="#ffe082" stroke-width="1"/>
-            <circle cx="42" cy="50" r="1.5" fill="#ffe082"/>
-        </svg>
-        <div>
-            <h1 style="margin: 0; font-size: 2.8rem; line-height: 1.1;">TailorTalk</h1>
-            <p style="margin: 5px 0 0 0; color: #ffd54f; font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 1px; font-weight: 500;">Your AI Stylist for Timeless Saree Elegance</p>
-        </div>
-    </div>
-    
-    <div class="header-card-grid">
-        <div class="header-feature-card">
-            <span style="font-size: 1.1rem;">✨</span>
-            <div class="feature-title">AI-Powered</div>
-            <div class="feature-desc">Smart understanding of your fashion style</div>
-        </div>
-        <div class="header-feature-card">
-            <span style="font-size: 1.1rem;">⚡</span>
-            <div class="feature-title">Instant Matches</div>
-            <div class="feature-desc">Find perfect sarees in a few seconds</div>
-        </div>
-        <div class="header-feature-card">
-            <span style="font-size: 1.1rem;">🎨</span>
-            <div class="feature-title">Curated Catalog</div>
-            <div class="feature-desc">Premium sarees from trusted artisans</div>
-        </div>
-    </div>
+st.markdown("""<div class="hero-container">
+<div style="flex: 1; min-width: 320px; display: flex; align-items: center; gap: 20px;">
+<!-- Vector Hanging Lanterns & Silhouette SVG Decoration -->
+<svg width="60" height="70" viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.95; filter: drop-shadow(0 0 10px rgba(212,175,55,0.4));">
+<line x1="12" y1="0" x2="12" y2="40" stroke="#d4af37" stroke-width="1.5"/>
+<path d="M6 40C6 36.6863 8.68629 34 12 34C15.3137 34 18 36.6863 18 40V50C18 53.3137 15.3137 56 12 56C8.68629 56 6 53.3137 6 50V40Z" fill="#aa7c11" stroke="#ffe082" stroke-width="1"/>
+<path d="M12 56V65" stroke="#ffe082" stroke-width="1"/>
+<circle cx="12" cy="65" r="2" fill="#ffe082"/>
+<line x1="42" y1="0" x2="42" y2="25" stroke="#d4af37" stroke-width="1.5"/>
+<path d="M36 25C36 21.6863 38.6863 19 42 19C45.3137 19 48 21.6863 48 25V35C48 38.3137 45.3137 41 42 41C38.6863 41 36 38.3137 36 35V25Z" fill="#aa7c11" stroke="#ffe082" stroke-width="1"/>
+<path d="M42 41V50" stroke="#ffe082" stroke-width="1"/>
+<circle cx="42" cy="50" r="1.5" fill="#ffe082"/>
+</svg>
+<div>
+<h1 style="margin: 0; font-size: 2.8rem; line-height: 1.1;">TailorTalk</h1>
+<p style="margin: 5px 0 0 0; color: #ffd54f; font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 1px; font-weight: 500;">Your AI Stylist for Timeless Saree Elegance</p>
 </div>
-""", unsafe_allow_html=True)
+</div>
+<div class="header-card-grid">
+<div class="header-feature-card">
+<span style="font-size: 1.1rem;">✨</span>
+<div class="feature-title">AI-Powered</div>
+<div class="feature-desc">Smart understanding of your fashion style</div>
+</div>
+<div class="header-feature-card">
+<span style="font-size: 1.1rem;">⚡</span>
+<div class="feature-title">Instant Matches</div>
+<div class="feature-desc">Find perfect sarees in a few seconds</div>
+</div>
+<div class="header-feature-card">
+<span style="font-size: 1.1rem;">🎨</span>
+<div class="feature-title">Curated Catalog</div>
+<div class="feature-desc">Premium sarees from trusted artisans</div>
+</div>
+</div>
+</div>""", unsafe_allow_html=True)
+
 
 # Initialize Session State variables
 if "messages" not in st.session_state:
