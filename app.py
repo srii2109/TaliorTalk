@@ -42,6 +42,12 @@ def get_saree_tags(title):
     return tags[:3] or [("Traditional","#7f8c8d")]
 
 def img_to_b64(path):
+    # Normalize Windows absolute paths to relative paths for cross-platform
+    if path:
+        path = path.replace("\\", "/")
+        for prefix in ["D:/TaliorTalk/", "C:/TaliorTalk/", "/TaliorTalk/"]:
+            if prefix in path:
+                path = path.split(prefix)[-1]
     try:
         with open(path, "rb") as f:
             return base64.b64encode(f.read()).decode()
@@ -118,15 +124,22 @@ with col_chat:
             rows.append(f'<div class="chat-row bot-row"><div class="bot-bubble-wrap"><div class="avatar">T</div><div class="bubble bot-bubble"><div class="sender-label">TailorTalk AI ✨</div>{m["content"]}</div></div></div>')
     st.markdown(f'<div class="chat-scroll">{"".join(rows)}</div>', unsafe_allow_html=True)
 
+    # Always show chat input — even if search engine failed
     if not api_key:
-        st.warning("Enter your Gemini API Key in the sidebar to activate the assistant.")
-        st.stop()
+        st.warning("⚠️ Enter your Gemini API Key in the sidebar to activate the assistant.")
 
-    agent = SareeAgent(api_key=api_key, search_engine=search_engine) if search_engine else None
+    agent = None
+    if api_key:
+        try:
+            agent = SareeAgent(api_key=api_key, search_engine=search_engine)
+        except Exception as e:
+            st.error(f"Agent init error: {e}")
 
-    if agent:
-        user_input = st.chat_input("Describe your dream saree...")
-        if user_input:
+    user_input = st.chat_input("Describe your dream saree...")
+    if user_input:
+        if not api_key:
+            st.warning("Please add your Gemini API Key in the sidebar first.")
+        else:
             st.session_state.messages.append({"role": "user", "content": user_input})
             with st.spinner("Finding your perfect saree..."):
                 try:

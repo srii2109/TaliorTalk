@@ -7,9 +7,9 @@ import faiss
 from transformers import CLIPProcessor, CLIPModel
 
 class SareeSearchEngine:
-    def __init__(self, index_path="D:/TaliorTalk/data/saree_index.pkl", 
-                 clip_index_path="D:/TaliorTalk/data/clip_index.faiss",
-                 color_index_path="D:/TaliorTalk/data/color_index.faiss"):
+    def __init__(self, index_path="data/saree_index.pkl",
+                 clip_index_path="data/clip_index.faiss",
+                 color_index_path="data/color_index.faiss"):
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         
         print(f"Loading search engine indexes... Device: {self.device}")
