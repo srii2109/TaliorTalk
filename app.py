@@ -70,11 +70,18 @@ if "img_path" not in st.session_state:
 # ─── Sidebar ──────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.markdown("### ⚙️ Agent Settings")
-    api_key = os.environ.get("GEMINI_API_KEY", "")
+    # Check Streamlit Cloud secrets first, then env var, then manual input
+    api_key = ""
+    try:
+        api_key = st.secrets.get("GEMINI_API_KEY", "")
+    except Exception:
+        pass
     if not api_key:
-        api_key = st.text_input("Gemini API Key", type="password")
-    else:
+        api_key = os.environ.get("GEMINI_API_KEY", "")
+    if api_key:
         st.markdown('<div style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.35);border-radius:10px;padding:10px;text-align:center;color:#ffd54f;font-size:0.82rem;font-weight:700;">🤖 Agent Status: Active ✨</div>', unsafe_allow_html=True)
+    else:
+        api_key = st.text_input("Gemini API Key", type="password")
     st.markdown("---")
     st.markdown("### 🎚️ Similarity Weights")
     w_clip  = st.slider("Style Weight (CLIP)",  0.0, 1.0, 0.7, 0.05)
